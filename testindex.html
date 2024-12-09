@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 地理クイズ</title>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMG4zj-7e60Fx6ikt6s_onmBTT0wASJ4E"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    #game-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    #title-screen, #game-screen, #map-screen, #result-screen {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+    }
+    #map, #result-map {
+      width: 170%;
+      height: 80vh; /* 地図の高さを調整 */
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    img {
+      max-width: 80%;
+      max-height: 60vh;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="game-container">
+  <!-- タイトル画面 -->
+  <div id="title-screen">
+    <h1>地理クイズ</h1>
+    <button onclick="showRules()">ルール説明</button>
+    <button onclick="startGame()">ゲームスタート</button>
+  </div>
+
+  <!-- ルール説明画面 -->
+  <div id="rules-screen">
+    <h2>ルール説明</h2>
+    <p>画面に表示される画像がどの位置で撮影されたかを推理してください。地図をクリックして答えを選び、得点を確認しましょう！</p>
+    <button onclick="goToTitle()">戻る</button>
+  </div>
+
+  <!-- ゲーム画面 -->
+  <div id="game-screen">
+    <img id="random-image" src="" alt="ランダム画像">
+    <button onclick="goToMap()">地図を表示</button>
+  </div>
+
+  <!-- 地図画面 -->
+  <div id="map-screen">
+    <h2>写真の位置を推理してください</h2>
+    <div id="map"></div>
+    <button onclick="submitGuess()">回答</button>
+  </div>
+
+  <!-- 結果画面 -->
+  <div id="result-screen">
+    <h2>結果発表</h2>
+    <p id="result-text"></p>
+    <div id="result-map"></div> <!-- 結果地図の表示 -->
+    <button onclick="restartGame()">再挑戦</button>
+  </div>
+</div>
+
+<script src="scripttest.js"></script>
+</body>
+</html>
